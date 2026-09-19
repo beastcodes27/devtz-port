@@ -1,4 +1,4 @@
-/* DevTZ Custom Styles and Cyber Animations */
+/* DevTZ Custom Theme System & Cyber Utilities */
 :root {
     --bg-page: #FFFFFF;
     --bg-subtle: #F8FAFC;
@@ -7,6 +7,7 @@
     --text-primary: #1C2459;
     --text-muted: #475569;
     --accent-lemon: #F5FF67;
+    --accent-lemon-hover: #E2EC48;
 }
 
 .dark {
@@ -17,13 +18,15 @@
     --text-primary: #FFFFFF;
     --text-muted: #9CA3AF;
     --accent-lemon: #F5FF67;
+    --accent-lemon-hover: #E2EC48;
 }
 
+/* Cyber Grid Backgrounds */
 .bg-cyber-grid {
     background-size: 40px 40px;
     background-image: 
-        linear-gradient(to right, rgba(28, 36, 89, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(28, 36, 89, 0.04) 1px, transparent 1px);
+        linear-gradient(to right, rgba(28, 36, 89, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(28, 36, 89, 0.05) 1px, transparent 1px);
 }
 
 .dark .bg-cyber-grid {
@@ -33,14 +36,28 @@
         linear-gradient(to bottom, rgba(245, 255, 103, 0.04) 1px, transparent 1px);
 }
 
-.glow-lemon {
-    box-shadow: 0 0 25px rgba(245, 255, 103, 0.35);
+/* High-Contrast Lemon Glitch Badges & Buttons */
+.badge-lemon {
+    background-color: #F5FF67;
+    color: #1C2459;
+    font-weight: 700;
 }
 
-.glow-blueberry {
-    box-shadow: 0 10px 30px rgba(28, 36, 89, 0.5);
+.btn-lemon {
+    background-color: #F5FF67;
+    color: #1C2459;
+    font-weight: 700;
+    box-shadow: 0 0 20px rgba(245, 255, 103, 0.35);
+    transition: all 0.2s ease-in-out;
 }
 
+.btn-lemon:hover {
+    background-color: #E2EC48;
+    box-shadow: 0 0 28px rgba(245, 255, 103, 0.55);
+    transform: translateY(-1px);
+}
+
+/* Smooth Marquee */
 @keyframes marquee {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-50%); }
@@ -49,9 +66,28 @@
 .animate-marquee {
     display: flex;
     width: max-content;
-    animation: marquee 24s linear infinite;
+    animation: marquee 26s linear infinite;
 }
 
 .animate-marquee:hover {
     animation-play-state: paused;
+}
+
+/* Micro-Scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #12173B;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2E3A82;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #F5FF67;
 }
