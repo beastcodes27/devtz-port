@@ -70,10 +70,13 @@
             </div>
             <div class="flex items-center gap-6">
                 <a href="#terms" class="hover:underline">Privacy Policy</a>
-                <a href="#privacy" class="hover:underline">Terms of Service</a>
-                <a href="#security" class="hover:underline">Security</a>
+                <a href="#privacy" class="hover:underline">Terms</a>
+                <a href="{{ route('login') }}" class="text-[#1C2459] dark:text-[#F5FF67] font-bold hover:underline flex items-center gap-1">
+                    <span>⚡ Team Portal</span>
+                </a>
                 <span class="text-[#F5FF67] bg-[#1C2459] px-2 py-0.5 rounded border border-[#2E3A82]">#1C2459 / #F5FF67</span>
             </div>
         </div>
     </div>
 </footer>
+

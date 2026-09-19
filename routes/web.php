@@ -23,4 +23,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('inquiries', \App\Http\Controllers\Admin\AdminInquiryController::class)->only(['index', 'show', 'destroy']);
     Route::patch('inquiries/{inquiry}/status', [\App\Http\Controllers\Admin\AdminInquiryController::class, 'updateStatus'])->name('inquiries.status');
     Route::resource('articles', \App\Http\Controllers\Admin\AdminArticleController::class);
+    Route::get('subscribers', [\App\Http\Controllers\Admin\AdminSubscriberController::class, 'index'])->name('subscribers.index');
+    Route::patch('subscribers/{subscriber}/toggle', [\App\Http\Controllers\Admin\AdminSubscriberController::class, 'toggle'])->name('subscribers.toggle');
+    Route::delete('subscribers/{subscriber}', [\App\Http\Controllers\Admin\AdminSubscriberController::class, 'destroy'])->name('subscribers.destroy');
 });
