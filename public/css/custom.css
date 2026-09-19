@@ -1,0 +1,57 @@
+/* DevTZ Custom Styles and Cyber Animations */
+:root {
+    --bg-page: #FFFFFF;
+    --bg-subtle: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --border-color: #E2E8F0;
+    --text-primary: #1C2459;
+    --text-muted: #475569;
+    --accent-lemon: #F5FF67;
+}
+
+.dark {
+    --bg-page: #1C2459;
+    --bg-subtle: #12173B;
+    --bg-card: #171E4A;
+    --border-color: #2E3A82;
+    --text-primary: #FFFFFF;
+    --text-muted: #9CA3AF;
+    --accent-lemon: #F5FF67;
+}
+
+.bg-cyber-grid {
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, rgba(28, 36, 89, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(28, 36, 89, 0.04) 1px, transparent 1px);
+}
+
+.dark .bg-cyber-grid {
+    background-size: 40px 40px;
+    background-image: 
+        linear-gradient(to right, rgba(245, 255, 103, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(245, 255, 103, 0.04) 1px, transparent 1px);
+}
+
+.glow-lemon {
+    box-shadow: 0 0 25px rgba(245, 255, 103, 0.35);
+}
+
+.glow-blueberry {
+    box-shadow: 0 10px 30px rgba(28, 36, 89, 0.5);
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 24s linear infinite;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
