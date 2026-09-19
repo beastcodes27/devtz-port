@@ -20,6 +20,7 @@ class Project extends Model
         'challenge',
         'solution',
         'banner_image',
+        'screenshots',
         'live_url',
         'github_url',
         'tech_stack',
@@ -29,6 +30,7 @@ class Project extends Model
 
     protected $casts = [
         'tech_stack' => 'array',
+        'screenshots' => 'array',
         'is_featured' => 'boolean',
     ];
 
@@ -59,3 +61,4 @@ class Project extends Model
         return $query;
     }
 }
+

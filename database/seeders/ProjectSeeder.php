@@ -24,6 +24,11 @@ class ProjectSeeder extends Seeder
                 'challenge' => 'The client faced high transaction failure rates and sluggish ledger reconciliations under peak traffic, with legacy monolithic bottlenecks causing timeouts.',
                 'solution' => 'Engineered an event-driven Laravel Octane & Redis cluster architecture with optimistic lock isolation, idempotency validation, and automated compliance auditing.',
                 'banner_image' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+                'screenshots' => [
+                    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80'
+                ],
                 'live_url' => 'https://nexuspay.devtz-demo.com',
                 'github_url' => 'https://github.com/devtz/nexuspay-core',
                 'tech_stack' => ['Laravel 12', 'Octane', 'PostgreSQL', 'Redis Cluster', 'Tailwind CSS', 'Vue 3'],
@@ -45,6 +50,11 @@ class ProjectSeeder extends Seeder
                 'challenge' => 'Existing legacy native iOS/Android apps suffered from fragmented feature parity, frequent sync conflicts in low-connectivity areas, and HIPAA compliance risks.',
                 'solution' => 'Developed a unified Flutter cross-platform architecture with local encrypted SQLite offline caching, automated syncing algorithms, and end-to-end encrypted WebRTC consultations.',
                 'banner_image' => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
+                'screenshots' => [
+                    'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80',
+                    'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1200&q=80'
+                ],
                 'live_url' => 'https://omnipulse.devtz-demo.com',
                 'github_url' => 'https://github.com/devtz/omnipulse-mobile',
                 'tech_stack' => ['Flutter', 'Dart', 'Laravel API', 'WebRTC', 'PostgreSQL', 'Docker'],
@@ -160,3 +170,4 @@ class ProjectSeeder extends Seeder
         }
     }
 }
+
