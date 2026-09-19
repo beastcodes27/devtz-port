@@ -81,6 +81,8 @@ class AdminAuthTest extends TestCase
             'summary' => 'High speed blockchain gateway',
             'challenge' => 'Legacy database deadlocks',
             'solution' => 'Event-driven Laravel Octane worker cluster',
+            'banner_image' => 'https://example.com/banner.jpg',
+            'screenshots_input' => "https://example.com/shot1.jpg\nhttps://example.com/shot2.jpg",
             'tech_stack_input' => 'Laravel 12, Octane, Postgres, Redis',
             'metric_labels' => ['Throughput', 'Latency'],
             'metric_values' => ['100k req/s', '12ms'],
@@ -89,10 +91,12 @@ class AdminAuthTest extends TestCase
         $response = $this->actingAs($this->admin)->post('/admin/projects', $payload);
 
         $response->assertRedirect('/admin/projects');
-        $this->assertDatabaseHas('projects', [
-            'title' => 'Quantum Ledger Protocol',
-            'category' => 'web',
-        ]);
+        
+        $project = Project::where('title', 'Quantum Ledger Protocol')->first();
+        $this->assertNotNull($project);
+        $this->assertCount(3, $project->screenshots); // banner + 2 shots
+        $this->assertContains('https://example.com/shot1.jpg', $project->screenshots);
+
         $this->assertDatabaseHas('project_metrics', [
             'label' => 'Throughput',
             'value' => '100k req/s',
@@ -128,3 +132,4 @@ class AdminAuthTest extends TestCase
         $this->assertGuest();
     }
 }
+
