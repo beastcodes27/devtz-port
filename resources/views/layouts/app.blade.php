@@ -51,6 +51,7 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <!-- Alpine.js & Lucide Icons -->
+    <script src="{{ asset('js/app.js') }}"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
