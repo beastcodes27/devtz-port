@@ -22,4 +22,5 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('projects', \App\Http\Controllers\Admin\AdminProjectController::class);
     Route::resource('inquiries', \App\Http\Controllers\Admin\AdminInquiryController::class)->only(['index', 'show', 'destroy']);
     Route::patch('inquiries/{inquiry}/status', [\App\Http\Controllers\Admin\AdminInquiryController::class, 'updateStatus'])->name('inquiries.status');
+    Route::resource('articles', \App\Http\Controllers\Admin\AdminArticleController::class);
 });
