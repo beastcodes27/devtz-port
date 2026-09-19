@@ -19,4 +19,5 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Protected Admin Mission Control Routes
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('projects', \App\Http\Controllers\Admin\AdminProjectController::class);
 });
