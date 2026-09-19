@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.blade.php diff=html
+*.css diff=css
+*.html diff=html
+*.js diff=javascript
+*.json diff=json
+*.php diff=php
+*.md text diff=markdown
