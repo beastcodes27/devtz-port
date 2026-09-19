@@ -55,19 +55,27 @@
                      x-transition:enter-end="opacity-100 scale-100"
                      class="group rounded-2xl bg-white dark:bg-[#171E4A] border border-gray-200 dark:border-[#2E3A82] overflow-hidden flex flex-col justify-between hover:border-[#F5FF67] dark:hover:border-[#F5FF67] transition-all duration-300 hover:-translate-y-1.5 shadow-sm hover:shadow-[0_15px_35px_rgba(28,36,89,0.18)] dark:hover:shadow-[0_0_30px_rgba(245,255,103,0.18)]">
                     
-                    <!-- Card Top Image / Media Banner -->
+                    <!-- Card Top Image / Media Banner with Automatic Slider Support -->
                     <div class="relative h-48 sm:h-52 w-full overflow-hidden bg-gray-900">
-                        <img src="{{ $project->banner_image }}" 
-                             alt="{{ $project->title }}" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85 group-hover:opacity-100">
+                        @if(!empty($project->screenshots) && count($project->screenshots) > 1)
+                            @include('components.image-slider', [
+                                'images' => $project->screenshots,
+                                'title' => $project->title,
+                                'aspect' => 'h-48 sm:h-52'
+                            ])
+                        @else
+                            <img src="{{ $project->banner_image }}" 
+                                 alt="{{ $project->title }}" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85 group-hover:opacity-100">
+                        @endif
                         
                         <!-- Top Category Pill & Client Tag -->
-                        <div class="absolute top-3 left-3 flex items-center gap-2">
+                        <div class="absolute top-3 left-3 flex items-center gap-2 pointer-events-none z-20">
                             <span class="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-[#1C2459]/90 text-[#F5FF67] border border-[#2E3A82] backdrop-blur-sm">
                                 {{ strtoupper($project->category) }}
                             </span>
                         </div>
-                        <div class="absolute top-3 right-3">
+                        <div class="absolute top-3 right-3 pointer-events-none z-20">
                             <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-black/60 text-white backdrop-blur-sm">
                                 {{ $project->client_name }}
                             </span>
@@ -122,3 +130,4 @@
 
     </div>
 </section>
+

@@ -47,6 +47,70 @@
                            x-text="selectedProject.tagline"></p>
                     </div>
 
+                    <!-- Automatic Screenshots Slider Component inside Modal -->
+                    <template x-if="selectedProject.screenshots && selectedProject.screenshots.length > 0">
+                        <div x-data="{
+                                slideIdx: 0,
+                                slideTimer: null,
+                                isPaused: false,
+                                init() {
+                                    this.startSlideShow();
+                                },
+                                startSlideShow() {
+                                    if (this.slideTimer) clearInterval(this.slideTimer);
+                                    this.slideTimer = setInterval(() => {
+                                        if (!this.isPaused && selectedProject && selectedProject.screenshots) {
+                                            this.slideIdx = (this.slideIdx + 1) % selectedProject.screenshots.length;
+                                        }
+                                    }, 3000);
+                                }
+                             }"
+                             @mouseenter="isPaused = true"
+                             @mouseleave="isPaused = false"
+                             class="relative w-full h-56 sm:h-72 overflow-hidden rounded-xl bg-gray-950 border border-gray-200 dark:border-[#2E3A82] group">
+                            
+                            <template x-for="(shot, index) in selectedProject.screenshots" :key="index">
+                                <div x-show="slideIdx === index"
+                                     x-transition:enter="transition ease-out duration-400"
+                                     x-transition:enter-start="opacity-0 scale-95"
+                                     x-transition:enter-end="opacity-100 scale-100"
+                                     x-transition:leave="transition ease-in duration-200"
+                                     x-transition:leave-start="opacity-100 scale-100"
+                                     x-transition:leave-end="opacity-0 scale-95"
+                                     class="absolute inset-0 w-full h-full">
+                                    <img :src="shot" :alt="selectedProject.title" class="w-full h-full object-cover">
+                                </div>
+                            </template>
+
+                            <!-- Slider Controls -->
+                            <template x-if="selectedProject.screenshots.length > 1">
+                                <div>
+                                    <button @click.stop="slideIdx = (slideIdx - 1 + selectedProject.screenshots.length) % selectedProject.screenshots.length"
+                                            class="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-lg bg-black/60 text-white hover:bg-[#F5FF67] hover:text-[#1C2459] border border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-200">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                                    </button>
+
+                                    <button @click.stop="slideIdx = (slideIdx + 1) % selectedProject.screenshots.length"
+                                            class="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-lg bg-black/60 text-white hover:bg-[#F5FF67] hover:text-[#1C2459] border border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-200">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                    </button>
+
+                                    <div class="absolute bottom-3 right-3 px-2 py-0.5 rounded text-[10px] font-mono bg-black/80 text-[#F5FF67] border border-[#2E3A82] backdrop-blur-sm">
+                                        <span x-text="(slideIdx + 1) + ' / ' + selectedProject.screenshots.length + ' Screenshots (Auto)'"></span>
+                                    </div>
+
+                                    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-black/50 px-2 py-1 rounded-full backdrop-blur-sm">
+                                        <template x-for="(s, sIdx) in selectedProject.screenshots" :key="sIdx">
+                                            <button @click.stop="slideIdx = sIdx"
+                                                    :class="slideIdx === sIdx ? 'bg-[#F5FF67] w-4' : 'bg-white/50 w-1.5'"
+                                                    class="h-1.5 rounded-full transition-all duration-300"></button>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+
                     <!-- Metrics Highlights Bar -->
                     <template x-if="selectedProject.metrics && selectedProject.metrics.length">
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-xl bg-gray-50 dark:bg-[#12173B] border border-gray-200 dark:border-[#2E3A82]">
@@ -115,3 +179,4 @@
         </div>
     </div>
 </div>
+
