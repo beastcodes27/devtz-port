@@ -57,6 +57,16 @@
     transform: translateY(-1px);
 }
 
+.dark .glow-blueberry-card {
+    box-shadow: 0 8px 32px 0 rgba(28, 36, 89, 0.37);
+    border: 1px solid rgba(46, 58, 130, 0.6);
+}
+
+.dark .glow-lemon-border:hover {
+    border-color: #F5FF67;
+    box-shadow: 0 0 25px rgba(245, 255, 103, 0.25);
+}
+
 /* Smooth Marquee */
 @keyframes marquee {
     0% { transform: translateX(0%); }
