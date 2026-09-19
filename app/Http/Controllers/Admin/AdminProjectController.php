@@ -53,6 +53,14 @@ class AdminProjectController extends Controller
         $slug = Str::slug($validated['title']);
         $validated['slug'] = Project::where('slug', $slug)->exists() ? $slug . '-' . time() : $slug;
 
+        // Parse screenshots (either array or newline/comma separated)
+        $screenshotsRaw = $request->input('screenshots_input', '');
+        $screenshots = array_filter(array_map('trim', preg_split('/[\r\n,]+/', $screenshotsRaw)));
+        if (!empty($validated['banner_image']) && !in_array($validated['banner_image'], $screenshots)) {
+            array_unshift($screenshots, $validated['banner_image']);
+        }
+        $validated['screenshots'] = !empty($screenshots) ? array_values($screenshots) : ($validated['banner_image'] ? [$validated['banner_image']] : []);
+
         // Parse tech stack comma separated string
         $techs = array_filter(array_map('trim', explode(',', $request->input('tech_stack_input', ''))));
         $validated['tech_stack'] = !empty($techs) ? $techs : ['Laravel', 'Tailwind CSS'];
@@ -114,6 +122,14 @@ class AdminProjectController extends Controller
         $validated['tech_stack'] = !empty($techs) ? $techs : $project->tech_stack;
         $validated['is_featured'] = $request->boolean('is_featured', true);
 
+        // Parse screenshots
+        $screenshotsRaw = $request->input('screenshots_input', '');
+        $screenshots = array_filter(array_map('trim', preg_split('/[\r\n,]+/', $screenshotsRaw)));
+        if (!empty($validated['banner_image']) && !in_array($validated['banner_image'], $screenshots)) {
+            array_unshift($screenshots, $validated['banner_image']);
+        }
+        $validated['screenshots'] = !empty($screenshots) ? array_values($screenshots) : ($validated['banner_image'] ? [$validated['banner_image']] : $project->screenshots);
+
         $project->update($validated);
 
         // Update metrics
@@ -148,3 +164,4 @@ class AdminProjectController extends Controller
             ->with('success', 'Project "' . $title . '" removed from showcase.');
     }
 }
+

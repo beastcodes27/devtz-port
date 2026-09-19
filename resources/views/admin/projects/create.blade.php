@@ -96,7 +96,7 @@
         <!-- Links & Media -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="space-y-1.5">
-                <label class="block font-bold text-gray-700 dark:text-gray-200">Banner Image URL</label>
+                <label class="block font-bold text-gray-700 dark:text-gray-200">Main Banner Image URL</label>
                 <input type="url" name="banner_image" value="{{ old('banner_image', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80') }}"
                        class="w-full px-3 py-2 rounded-xl bg-gray-50 dark:bg-[#12173B] border border-gray-300 dark:border-[#2E3A82] text-gray-900 dark:text-white focus:outline-none focus:border-[#F5FF67]">
             </div>
@@ -112,6 +112,14 @@
                 <input type="url" name="github_url" value="{{ old('github_url') }}" placeholder="https://github.com/..."
                        class="w-full px-3 py-2 rounded-xl bg-gray-50 dark:bg-[#12173B] border border-gray-300 dark:border-[#2E3A82] text-gray-900 dark:text-white focus:outline-none focus:border-[#F5FF67]">
             </div>
+        </div>
+
+        <!-- Multiple Screenshots Slider URLs -->
+        <div class="space-y-1.5">
+            <label class="block font-bold text-gray-700 dark:text-gray-200">Multiple Screenshots / Gallery URLs (one per line or comma-separated for Automatic Slider)</label>
+            <textarea name="screenshots_input" rows="3" placeholder="https://images.unsplash.com/photo-1551288049-bebda4e38f71...&#10;https://images.unsplash.com/photo-1563986768609-322da13575f3...&#10;https://images.unsplash.com/photo-1460925895917-afdab827c52f..."
+                      class="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-[#12173B] border border-gray-300 dark:border-[#2E3A82] text-gray-900 dark:text-white focus:outline-none focus:border-[#F5FF67]">{{ old('screenshots_input') }}</textarea>
+            <span class="text-[10px] text-gray-400">These images will automatically transition in a high-tech slider on the case study modal and project showcase.</span>
         </div>
 
         <!-- Tech Stack -->
@@ -149,3 +157,4 @@
     </form>
 </div>
 @endsection
+
