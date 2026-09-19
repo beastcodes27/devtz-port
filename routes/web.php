@@ -20,4 +20,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('projects', \App\Http\Controllers\Admin\AdminProjectController::class);
+    Route::resource('inquiries', \App\Http\Controllers\Admin\AdminInquiryController::class)->only(['index', 'show', 'destroy']);
+    Route::patch('inquiries/{inquiry}/status', [\App\Http\Controllers\Admin\AdminInquiryController::class, 'updateStatus'])->name('inquiries.status');
 });
