@@ -38,7 +38,7 @@
             <div class="space-y-3">
                 <h4 class="text-xs font-mono uppercase tracking-wider text-[#1C2459] dark:text-[#F5FF67] font-semibold">Explore</h4>
                 <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                    <li><a href="#projects" class="hover:text-[#1C2459] dark:hover:text-white transition-colors">Case Studies</a></li>
+                    <li><a href="#projects" class="hover:text-[#1C2459] dark:hover:text-white transition-colors">Projects</a></li>
                     <li><a href="#tech-stack" class="hover:text-[#1C2459] dark:hover:text-white transition-colors">Technology Matrix</a></li>
                     <li><a href="#cost-estimator" class="hover:text-[#1C2459] dark:hover:text-white transition-colors">Project Estimator</a></li>
                     <li><a href="#about" class="hover:text-[#1C2459] dark:hover:text-white transition-colors">About Team</a></li>
