@@ -130,7 +130,7 @@
                         <!-- Action Links: View Case Study / Live Demo -->
                         <div class="pt-4 border-t border-gray-100 dark:border-[#2E3A82]/60 flex items-center justify-between gap-3">
                             <button type="button"
-                                    @click="openProjectModal({{ json_encode($project->load('metrics')) }})" 
+                                    @click="openProjectModal({{ json_encode($project->relationLoaded('metrics') ? $project : $project->load('metrics')) }})" 
                                     class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-mono font-bold text-[#1C2459] bg-[#F5FF67] hover:bg-[#E2EC48] transition-all transform hover:-translate-y-0.5 shadow-sm hover:shadow-[0_0_15px_rgba(245,255,103,0.35)]">
                                 <span>View Case Study</span>
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>

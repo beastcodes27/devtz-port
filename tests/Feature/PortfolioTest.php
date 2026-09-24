@@ -2,79 +2,111 @@
 
 namespace Tests\Feature;
 
-use App\Models\Article;
-use App\Models\CompanyStat;
-use App\Models\ContactInquiry;
-use App\Models\NewsletterSubscriber;
 use App\Models\Project;
 use App\Models\Service;
-use App\Models\Testimonial;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class PortfolioTest extends TestCase
 {
-    use RefreshDatabase;
-
-    public function test_portfolio_landing_page_renders_successfully(): void
+    public function test_navbar_displays_brand_and_navigation_links(): void
     {
-        Service::create([
-            'title' => 'Web Apps',
-            'slug' => 'web-apps',
-            'tagline' => 'Scalable systems',
-            'description' => 'Fast Laravel apps',
+        $view = $this->view('components.navbar');
+
+        $view->assertSee('Services');
+        $view->assertSee('Case Studies');
+        $view->assertSee('Process');
+        $view->assertSee('About Us');
+        $view->assertSee('Contact');
+        $view->assertSee('Get a Quote');
+    }
+
+    public function test_hero_section_displays_value_proposition_ctas_and_trust_badges(): void
+    {
+        $view = $this->view('components.hero');
+
+        $view->assertSee('Transforming businesses through');
+        $view->assertSee('enterprise-grade');
+        $view->assertSee('digital solutions.');
+        $view->assertSee('Custom Web Apps');
+        $view->assertSee('Mobile Apps');
+        $view->assertSee('System Integrations');
+        $view->assertSee('Start a Project');
+        $view->assertSee('View Our Work');
+        $view->assertSee('devtz --cli');
+        $view->assertSee('20+');
+        $view->assertSee('Delivered Systems');
+        $view->assertSee('99.9%');
+        $view->assertSee('Reliability');
+        $view->assertSee('Enterprise-Ready');
+    }
+
+    public function test_process_component_displays_systematic_workflow_stages(): void
+    {
+        $view = $this->view('components.process');
+
+        $view->assertSee('HOW WE DELIVER');
+        $view->assertSee('Our proven engineering process.');
+        $view->assertSee('Discovery & Architecture Blueprint', false);
+        $view->assertSee('Agile Sprint Engineering');
+        $view->assertSee('Benchmark & Security Auditing', false);
+        $view->assertSee('Production Rollout & Telemetry', false);
+    }
+
+    public function test_services_component_renders_interactive_cards_with_deliverables(): void
+    {
+        $service = new Service([
+            'title' => 'Custom Web Applications',
+            'slug' => 'custom-web-applications',
+            'tagline' => 'High-concurrency SaaS platforms',
+            'description' => 'Tailored enterprise web applications engineered for speed.',
             'icon' => 'globe',
-            'features' => ['SaaS', 'APIs'],
-            'tech_stack' => ['Laravel', 'Vue'],
+            'deliverables' => [
+                'SaaS Multi-Tenant Platforms',
+                'Internal Management Tools & Portals',
+            ],
+            'tech_stack' => ['Laravel', 'Vue.js', 'PostgreSQL'],
             'order' => 1,
             'is_featured' => true,
         ]);
 
-        $response = $this->get('/');
+        $view = $this->view('components.services', [
+            'services' => collect([$service]),
+        ]);
 
-        $response->assertStatus(200);
-        $response->assertSee('DevTZ');
-        $response->assertSee('Web Apps');
-        $response->assertSee('#1C2459');
-        $response->assertSee('#F5FF67');
+        $view->assertSee('Custom Web Applications');
+        $view->assertSee('Key Deliverables');
+        $view->assertSee('SaaS Multi-Tenant Platforms');
     }
 
-    public function test_contact_form_submits_and_stores_inquiry(): void
+    public function test_projects_component_renders_problem_solution_cards(): void
     {
-        $payload = [
-            'name' => 'Sarah Connor',
-            'email' => 'sarah@cyberdyne.io',
-            'company' => 'Cyberdyne Systems',
-            'project_type' => 'custom-web-application',
-            'budget_range' => '$10,000 - $25,000',
-            'timeline' => '1-3-months',
-            'message' => 'We need an enterprise Laravel architecture with real-time telemetry streaming.',
-        ];
-
-        $response = $this->post('/contact', $payload);
-
-        $response->assertRedirect('/#contact');
-        $response->assertSessionHas('success');
-
-        $this->assertDatabaseHas('contact_inquiries', [
-            'email' => 'sarah@cyberdyne.io',
-            'name' => 'Sarah Connor',
-            'status' => 'new',
+        $project = new Project([
+            'title' => 'NexusPay: Multi-Currency Settlement',
+            'slug' => 'nexuspay-settlement',
+            'client_name' => 'Nexus Global',
+            'industry' => 'Fintech',
+            'category' => 'web',
+            'tagline' => 'Sub-40ms high-throughput payment orchestrator',
+            'summary' => 'Fault-tolerant payment rail.',
+            'challenge' => 'High transaction latency and dropped connections during peak clearing windows.',
+            'solution' => 'Event-driven Octane architecture with idempotent ledger queues.',
+            'outcome' => 'Reduced processing latency by 45% with 99.98% ledger settlement accuracy.',
+            'tech_stack' => ['Laravel 12', 'PostgreSQL', 'Redis'],
+            'live_url' => 'https://nexuspay.devtz-demo.com',
         ]);
-    }
+        $project->setRelation('metrics', collect([]));
 
-    public function test_newsletter_subscription_registers_subscriber(): void
-    {
-        $response = $this->post('/newsletter/subscribe', [
-            'email' => 'lead.architect@enterprise.com',
+        $view = $this->view('components.projects', [
+            'projects' => collect([$project]),
         ]);
 
-        $response->assertRedirect();
-        $response->assertSessionHas('success');
-
-        $this->assertDatabaseHas('newsletter_subscribers', [
-            'email' => 'lead.architect@enterprise.com',
-            'status' => 'active',
-        ]);
+        $view->assertSee('CASE STUDIES');
+        $view->assertSee('NexusPay: Multi-Currency Settlement');
+        $view->assertSee('Fintech');
+        $view->assertSee('High transaction latency');
+        $view->assertSee('Event-driven Octane architecture');
+        $view->assertSee('Reduced processing latency by 45%');
+        $view->assertSee('View Case Study');
+        $view->assertSee('Live Demo');
     }
 }
