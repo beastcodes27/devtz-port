@@ -14,11 +14,13 @@ class Project extends Model
         'title',
         'slug',
         'client_name',
+        'industry',
         'category',
         'tagline',
         'summary',
         'challenge',
         'solution',
+        'outcome',
         'banner_image',
         'screenshots',
         'live_url',
@@ -58,7 +60,7 @@ class Project extends Model
         if ($category && $category !== 'all') {
             return $query->where('category', $category);
         }
+
         return $query;
     }
 }
-
