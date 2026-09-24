@@ -62,7 +62,6 @@
                     </div>
                     <div class="relative">
                         <input :type="showPassword ? 'text' : 'password'" name="password" id="password" required
-                               value="password"
                                placeholder="••••••••••••"
                                class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-[#12173B] border border-gray-300 dark:border-[#2E3A82] text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-[#F5FF67] transition-all">
                     </div>
