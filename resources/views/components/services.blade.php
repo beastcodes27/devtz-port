@@ -51,12 +51,19 @@
                             {{ $service->description }}
                         </p>
 
-                        <!-- Features list -->
-                        <div class="space-y-2 mb-6 pt-4 border-t border-gray-100 dark:border-[#2E3A82]/60">
-                            @foreach($service->features as $feature)
+                        <!-- Key Deliverables Bullet Points -->
+                        <div class="space-y-2.5 mb-6 pt-4 border-t border-gray-100 dark:border-[#2E3A82]/60">
+                            <div class="text-[11px] font-mono font-bold uppercase tracking-wider text-gray-500 dark:text-[#A5B4FC] mb-2 flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#F5FF67]"></span>
+                                <span>Key Deliverables</span>
+                            </div>
+                            @php
+                                $deliverablesList = !empty($service->deliverables) ? $service->deliverables : $service->features;
+                            @endphp
+                            @foreach($deliverablesList as $deliverable)
                                 <div class="flex items-start gap-2 text-xs text-gray-700 dark:text-gray-300">
-                                    <span class="text-[#1C2459] dark:text-[#F5FF67] font-bold mt-0.5">▸</span>
-                                    <span>{{ $feature }}</span>
+                                    <svg class="w-3.5 h-3.5 text-[#1C2459] dark:text-[#F5FF67] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                    <span class="leading-relaxed">{{ $deliverable }}</span>
                                 </div>
                             @endforeach
                         </div>
