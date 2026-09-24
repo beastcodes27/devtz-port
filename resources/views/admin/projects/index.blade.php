@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Portfolio Case Studies')
+@section('title', 'Portfolio Projects')
 
 @section('content')
 <div class="space-y-6 max-w-7xl mx-auto">
@@ -9,7 +9,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
             <h2 class="text-2xl font-bold text-[#1C2459] dark:text-white font-mono">Manage Portfolio Projects</h2>
-            <p class="text-xs text-gray-500 dark:text-gray-400 font-mono">Create, calibrate metrics, and organize public case studies.</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 font-mono">Create, upload screenshots, add demo links, and manage showcase projects.</p>
         </div>
 
         <a href="{{ route('admin.projects.create') }}" 
@@ -25,8 +25,9 @@
                 <thead class="bg-gray-50 dark:bg-[#12173B] text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-[#2E3A82]">
                     <tr>
                         <th class="px-6 py-4">Project & Client</th>
-                        <th class="px-6 py-4">Domain</th>
-                        <th class="px-6 py-4">Key Metrics</th>
+                        <th class="px-6 py-4">Domain / Category</th>
+                        <th class="px-6 py-4">Screenshots & Media</th>
+                        <th class="px-6 py-4">Demo Link</th>
                         <th class="px-6 py-4">Tech Stack</th>
                         <th class="px-6 py-4 text-right">Actions</th>
                     </tr>
@@ -39,23 +40,38 @@
                                 <div class="text-[11px] text-gray-500 dark:text-gray-400">Client: {{ $project->client_name }}</div>
                             </td>
                             <td class="px-6 py-4">
-                                <span class="px-2.5 py-1 rounded text-[10px] font-bold uppercase bg-[#1C2459] text-[#F5FF67] border border-[#2E3A82]">
-                                    {{ $project->category }}
-                                </span>
-                            </td>
-                            <td class="px-6 py-4">
                                 <div class="space-y-1">
-                                    @foreach($project->metrics as $metric)
-                                        <div class="text-[11px]">
-                                            <span class="font-bold text-[#1C2459] dark:text-[#F5FF67]">{{ $metric->value }}</span>
-                                            <span class="text-gray-400 truncate text-[10px]">({{ $metric->label }})</span>
-                                        </div>
-                                    @endforeach
+                                    <span class="px-2.5 py-1 rounded text-[10px] font-bold uppercase bg-[#1C2459] text-[#F5FF67] border border-[#2E3A82]">
+                                        {{ $project->category }}
+                                    </span>
+                                    @if($project->industry)
+                                        <div class="text-[10px] text-gray-400">{{ $project->industry }}</div>
+                                    @endif
                                 </div>
                             </td>
                             <td class="px-6 py-4">
+                                @php
+                                    $shotsCount = is_array($project->screenshots) ? count($project->screenshots) : 0;
+                                @endphp
+                                <div class="flex items-center gap-1.5">
+                                    <span class="px-2 py-0.5 rounded text-[10px] bg-gray-100 dark:bg-[#12173B] text-[#1C2459] dark:text-[#F5FF67] border border-gray-300 dark:border-[#2E3A82]">
+                                        📸 {{ $shotsCount }} {{ Str::plural('Shot', $shotsCount) }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                @if(!empty($project->live_url))
+                                    <a href="{{ $project->live_url }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[11px] text-[#1C2459] dark:text-[#F5FF67] hover:underline font-bold">
+                                        <span>Live Demo</span>
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                                    </a>
+                                @else
+                                    <span class="text-gray-400 text-[10px]">No Demo Link</span>
+                                @endif
+                            </td>
+                            <td class="px-6 py-4">
                                 <div class="flex flex-wrap gap-1 max-w-xs">
-                                    @foreach($project->tech_stack ?? [] as $t)
+                                    @foreach(array_slice($project->tech_stack ?? [], 0, 3) as $t)
                                         <span class="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 dark:bg-[#12173B] text-gray-600 dark:text-gray-300">
                                             {{ $t }}
                                         </span>
@@ -81,8 +97,8 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="px-6 py-12 text-center text-gray-400">
-                                No projects found. Click above to deploy your first case study.
+                            <td colspan="6" class="px-6 py-12 text-center text-gray-400">
+                                No projects found. Click above to deploy your first project.
                             </td>
                         </tr>
                     @endforelse
