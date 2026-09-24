@@ -50,19 +50,25 @@
                     </button>
                 </div>
 
-                <!-- Stats summary micro-bar -->
-                <div class="pt-6 border-t border-gray-200 dark:border-[#2E3A82]/50 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0 text-left">
-                    <div>
-                        <div class="text-2xl font-bold font-mono text-[#1C2459] dark:text-[#F5FF67]">99.99%</div>
-                        <div class="text-xs text-gray-500 dark:text-gray-400">Production SLA</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold font-mono text-[#1C2459] dark:text-[#F5FF67]">40+</div>
-                        <div class="text-xs text-gray-500 dark:text-gray-400">Shipped Products</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold font-mono text-[#1C2459] dark:text-[#F5FF67]">&lt; 35ms</div>
-                        <div class="text-xs text-gray-500 dark:text-gray-400">Avg API Latency</div>
+                <!-- Quick Trust Badges / Stats banner -->
+                <div class="pt-6 border-t border-gray-200 dark:border-[#2E3A82]/50 max-w-xl mx-auto lg:mx-0">
+                    <div class="p-3 rounded-xl bg-gray-50 dark:bg-[#12173B]/80 border border-gray-200 dark:border-[#2E3A82] flex flex-wrap items-center justify-between gap-3 text-xs font-mono shadow-sm">
+                        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-200">
+                            <span class="w-2 h-2 rounded-full bg-[#F5FF67] shadow-[0_0_8px_rgba(245,255,103,0.8)]"></span>
+                            <span class="font-bold text-[#1C2459] dark:text-[#F5FF67]">20+</span>
+                            <span>Delivered Systems</span>
+                        </div>
+                        <div class="hidden sm:block text-gray-300 dark:text-[#2E3A82]">|</div>
+                        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-200">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                            <span class="font-bold text-[#1C2459] dark:text-white">99.9%</span>
+                            <span>Reliability</span>
+                        </div>
+                        <div class="hidden sm:block text-gray-300 dark:text-[#2E3A82]">|</div>
+                        <div class="flex items-center gap-2 text-gray-700 dark:text-gray-200">
+                            <svg class="w-3.5 h-3.5 text-[#F5FF67]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <span class="font-bold text-[#1C2459] dark:text-white uppercase tracking-wider text-[11px]">Enterprise-Ready</span>
+                        </div>
                     </div>
                 </div>
             </div>
