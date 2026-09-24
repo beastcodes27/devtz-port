@@ -78,10 +78,9 @@
         <nav class="flex flex-col space-y-3 font-medium text-sm">
             <a @click="mobileMenuOpen = false" href="#services" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Services</a>
             <a @click="mobileMenuOpen = false" href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Case Studies</a>
-            <a @click="mobileMenuOpen = false" href="#tech-stack" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Tech Matrix</a>
-            <a @click="mobileMenuOpen = false" href="#about" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">About DevTZ</a>
-            <a @click="mobileMenuOpen = false" href="#cost-estimator" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Cost Estimator</a>
-            <a @click="mobileMenuOpen = false" href="#blog" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Insights</a>
+            <a @click="mobileMenuOpen = false" href="#process" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Process</a>
+            <a @click="mobileMenuOpen = false" href="#about" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">About Us</a>
+            <a @click="mobileMenuOpen = false" href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Contact</a>
         </nav>
         <div class="pt-3 border-t border-gray-200 dark:border-[#2E3A82] flex flex-col gap-3">
             <button @click="mobileMenuOpen = false; toggleTerminal()" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-gray-100 dark:bg-[#1C2459] border border-gray-300 dark:border-[#2E3A82] text-xs font-mono text-[#1C2459] dark:text-[#F5FF67]">
