@@ -19,10 +19,9 @@
             <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
                 <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Services</a>
                 <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Case Studies</a>
-                <a href="#tech-stack" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Tech Matrix</a>
-                <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">About DevTZ</a>
-                <a href="#cost-estimator" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Estimator</a>
-                <a href="#blog" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Insights</a>
+                <a href="#process" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Process</a>
+                <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">About Us</a>
+                <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Contact</a>
             </nav>
 
             <!-- Actions Right (Terminal, Theme Toggle, CTA) -->
