@@ -126,6 +126,17 @@
                         </div>
                     </template>
 
+                    <!-- Project Description -->
+                    <template x-if="selectedProject.description || selectedProject.summary">
+                        <div class="p-5 rounded-xl bg-gray-50 dark:bg-[#12173B]/80 border border-gray-200 dark:border-[#2E3A82]/60 space-y-2">
+                            <div class="flex items-center gap-2 text-xs font-mono font-bold text-[#1C2459] dark:text-[#F5FF67] uppercase tracking-wider">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span>Project Description</span>
+                            </div>
+                            <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-xs sm:text-sm" x-text="selectedProject.description || selectedProject.summary"></p>
+                        </div>
+                    </template>
+
                     <!-- Challenge & Solution Breakdown -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
                         <div class="p-5 rounded-xl bg-gray-50 dark:bg-[#12173B]/80 border border-gray-200 dark:border-[#2E3A82]/60 space-y-2">

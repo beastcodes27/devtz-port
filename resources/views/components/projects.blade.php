@@ -6,13 +6,13 @@
             <div class="space-y-3">
                 <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white dark:bg-[#171E4A] border border-gray-300 dark:border-[#2E3A82] text-xs font-mono text-[#1C2459] dark:text-[#F5FF67]">
                     <span class="w-2 h-2 rounded-full bg-[#F5FF67]"></span>
-                    <span>CASE STUDIES & OUTCOMES</span>
+                    <span>FEATURED PROJECTS</span>
                 </div>
                 <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1C2459] dark:text-white">
-                    Engineered for measurable business impact.
+                    Production systems built for scale.
                 </h2>
                 <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 max-w-xl">
-                    Real architectural challenges solved with precision engineering. Inspect client problems, custom implementations, and measured outcomes.
+                    Explore real-world software platforms engineered with precision. Inspect live demonstrations, uploaded screenshot galleries, and technical architecture breakdowns.
                 </p>
             </div>
 
@@ -21,7 +21,7 @@
                 <button @click="projectCategory = 'all'" 
                         :class="projectCategory === 'all' ? 'bg-[#F5FF67] text-[#1C2459] font-bold shadow-[0_0_12px_rgba(245,255,103,0.3)]' : 'text-gray-600 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-white hover:bg-gray-100 dark:hover:bg-[#12173B]/80'"
                         class="px-3.5 py-1.5 rounded-lg transition-all duration-200">
-                    All Case Studies
+                    All Projects
                 </button>
                 <button @click="projectCategory = 'web'" 
                         :class="projectCategory === 'web' ? 'bg-[#F5FF67] text-[#1C2459] font-bold shadow-[0_0_12px_rgba(245,255,103,0.3)]' : 'text-gray-600 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-white hover:bg-gray-100 dark:hover:bg-[#12173B]/80'"
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <!-- Problem-Solution Case Cards Grid -->
+        <!-- Projects Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($projects as $project)
                 <div x-show="projectCategory === 'all' || projectCategory === '{{ $project->category }}'"
@@ -57,6 +57,21 @@
                     
                     <!-- Top Accent Highlight -->
                     <div class="h-0.5 w-full bg-gradient-to-r from-transparent via-[#F5FF67] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    <!-- Project Screenshots Gallery / Media Slider -->
+                    @if(!empty($project->screenshots) && count($project->screenshots) > 1)
+                        <div class="relative h-48 w-full overflow-hidden bg-gray-900 border-b border-gray-100 dark:border-[#2E3A82]/50">
+                            @include('components.image-slider', [
+                                'images' => $project->screenshots,
+                                'title' => $project->title,
+                                'aspect' => 'h-48'
+                            ])
+                        </div>
+                    @elseif(!empty($project->banner_image))
+                        <div class="relative h-48 w-full overflow-hidden bg-gray-900 border-b border-gray-100 dark:border-[#2E3A82]/50">
+                            <img src="{{ $project->banner_image }}" alt="{{ $project->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                        </div>
+                    @endif
 
                     <!-- Card Header: Industry, Client, Project Name -->
                     <div class="p-6 pb-4 border-b border-gray-100 dark:border-[#2E3A82]/50 bg-gray-50/60 dark:bg-[#141A42]/60">
@@ -78,30 +93,32 @@
                         @endif
                     </div>
 
-                    <!-- Card Body: Problem Challenge, Solution & Tech Stack, Outcome Impact -->
+                    <!-- Card Body: Description, Tech Stack, Outcome Impact -->
                     <div class="p-6 pt-4 flex-1 flex flex-col justify-between space-y-4">
                         <div class="space-y-3.5">
-                            <!-- Challenge (The client's problem) -->
-                            <div class="rounded-xl p-3 bg-red-500/5 dark:bg-red-500/10 border border-red-500/15">
-                                <div class="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400 mb-1">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                                    <span>Challenge</span>
-                                </div>
+                            <!-- Project Description -->
+                            <div class="space-y-1">
+                                <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-[#1C2459] dark:text-[#F5FF67] flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    <span>Project Description</span>
+                                </span>
                                 <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-3">
-                                    {{ $project->challenge }}
+                                    {{ $project->description ?: $project->summary }}
                                 </p>
                             </div>
 
-                            <!-- Solution & Architecture -->
-                            <div class="rounded-xl p-3 bg-cyan-500/5 dark:bg-cyan-500/10 border border-cyan-500/15">
-                                <div class="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 mb-1">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-                                    <span>Solution</span>
+                            <!-- Challenge Preview -->
+                            @if(!empty($project->challenge))
+                                <div class="rounded-xl p-3 bg-red-500/5 dark:bg-red-500/10 border border-red-500/15">
+                                    <div class="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400 mb-1">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                        <span>Challenge</span>
+                                    </div>
+                                    <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-2">
+                                        {{ $project->challenge }}
+                                    </p>
                                 </div>
-                                <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-3">
-                                    {{ $project->solution }}
-                                </p>
-                            </div>
+                            @endif
 
                             <!-- Tech Stack Badges -->
                             <div>
@@ -116,23 +133,25 @@
                             </div>
 
                             <!-- Business Impact / Outcome -->
-                            <div class="rounded-xl p-3 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
-                                <div class="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-1">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                                    <span>Business Impact / Outcome</span>
+                            @if(!empty($project->outcome))
+                                <div class="rounded-xl p-3 bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/20 text-emerald-800 dark:text-emerald-300">
+                                    <div class="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-1">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                        <span>Business Impact / Outcome</span>
+                                    </div>
+                                    <div class="text-xs font-semibold leading-relaxed">
+                                        {{ $project->outcome }}
+                                    </div>
                                 </div>
-                                <div class="text-xs font-semibold leading-relaxed">
-                                    {{ $project->outcome ?? 'Delivered high-reliability enterprise scalability and zero-downtime performance.' }}
-                                </div>
-                            </div>
+                            @endif
                         </div>
 
-                        <!-- Action Links: View Case Study / Live Demo -->
+                        <!-- Action Links: View Project Details / Live Demo Link -->
                         <div class="pt-4 border-t border-gray-100 dark:border-[#2E3A82]/60 flex items-center justify-between gap-3">
                             <button type="button"
                                     @click="openProjectModal({{ json_encode($project->relationLoaded('metrics') ? $project : $project->load('metrics')) }})" 
                                     class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-mono font-bold text-[#1C2459] bg-[#F5FF67] hover:bg-[#E2EC48] transition-all transform hover:-translate-y-0.5 shadow-sm hover:shadow-[0_0_15px_rgba(245,255,103,0.35)]">
-                                <span>View Case Study</span>
+                                <span>View Project</span>
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </button>
 
