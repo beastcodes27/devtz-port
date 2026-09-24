@@ -18,11 +18,11 @@
 
                 <!-- Main Heading -->
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-[#1C2459] dark:text-white">
-                    Engineering high-velocity <br class="hidden sm:inline">
+                    Transforming businesses through <br class="hidden sm:inline">
                     <span class="relative inline-block mt-2">
-                        <span class="relative z-10 px-3 py-1 text-[#1C2459] bg-[#F5FF67] rounded-md shadow-[0_0_20px_rgba(245,255,103,0.4)]">software systems</span>
+                        <span class="relative z-10 px-3 py-1 text-[#1C2459] bg-[#F5FF67] rounded-md shadow-[0_0_20px_rgba(245,255,103,0.4)]">enterprise-grade</span>
                     </span>
-                    with zero compromise.
+                    digital solutions.
                 </h1>
 
                 <!-- Subheading -->
