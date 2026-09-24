@@ -17,6 +17,7 @@ class Project extends Model
         'industry',
         'category',
         'tagline',
+        'description',
         'summary',
         'challenge',
         'solution',
@@ -62,5 +63,21 @@ class Project extends Model
         }
 
         return $query;
+    }
+
+    /**
+     * Get the project description, falling back to summary if not explicitly set.
+     */
+    public function getDescriptionAttribute(?string $value): string
+    {
+        return ! empty($value) ? $value : ($this->attributes['summary'] ?? '');
+    }
+
+    /**
+     * Get the demo link URL alias.
+     */
+    public function getDemoUrlAttribute(): ?string
+    {
+        return $this->attributes['live_url'] ?? null;
     }
 }
