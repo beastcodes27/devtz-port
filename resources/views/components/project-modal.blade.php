@@ -38,6 +38,9 @@
                         <div class="flex flex-wrap items-center gap-2">
                             <span class="px-2.5 py-1 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-[#1C2459] text-[#F5FF67] border border-[#2E3A82]"
                                   x-text="selectedProject.category.toUpperCase()"></span>
+                            <span x-show="selectedProject.industry"
+                                  class="px-2.5 py-1 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-[#F5FF67]/20 text-[#1C2459] dark:text-[#F5FF67] border border-[#F5FF67]/40"
+                                  x-text="selectedProject.industry"></span>
                             <span class="text-xs font-mono text-gray-500 dark:text-gray-400"
                                   x-text="'Client: ' + selectedProject.client_name"></span>
                         </div>
@@ -139,6 +142,17 @@
                             <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-xs sm:text-sm" x-text="selectedProject.solution"></p>
                         </div>
                     </div>
+
+                    <!-- Business Impact / Outcome -->
+                    <template x-if="selectedProject.outcome">
+                        <div class="p-5 rounded-xl bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/25 text-emerald-800 dark:text-emerald-300 space-y-1.5">
+                            <div class="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                <span>Business Impact & Measurable Outcome</span>
+                            </div>
+                            <p class="text-xs sm:text-sm font-semibold leading-relaxed text-emerald-900 dark:text-emerald-200" x-text="selectedProject.outcome"></p>
+                        </div>
+                    </template>
 
                     <!-- Tech Stack Implemented -->
                     <div class="space-y-2">
