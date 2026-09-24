@@ -44,7 +44,7 @@
                     </label>
                     <div class="relative">
                         <input type="email" name="email" id="email" required autofocus
-                               value="{{ old('email', 'admin@devtz.com') }}"
+                               value="{{ old('email') }}"
                                placeholder="architect@devtz.com"
                                class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-[#12173B] border border-gray-300 dark:border-[#2E3A82] text-sm text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-[#F5FF67] transition-all">
                     </div>
