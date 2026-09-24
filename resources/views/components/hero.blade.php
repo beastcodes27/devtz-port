@@ -27,7 +27,7 @@
 
                 <!-- Subheading -->
                 <p class="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                    We architect, build, and scale bespoke web applications, high-throughput cloud APIs, and automated AI pipelines for founders and enterprise engineering teams.
+                    We architect, build, and scale high-performance <span class="font-semibold text-[#1C2459] dark:text-white">Custom Web Apps</span>, fluid <span class="font-semibold text-[#1C2459] dark:text-white">Mobile Apps</span>, and mission-critical <span class="font-semibold text-[#1C2459] dark:text-white">System Integrations</span> for founders and enterprise leaders.
                 </p>
 
                 <!-- CTA Actions -->
