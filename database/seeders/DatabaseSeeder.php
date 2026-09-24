@@ -13,12 +13,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Seed default super-admin team member
+        // Seed default super-admin team members
         User::updateOrCreate(
             ['email' => 'admin@devtz.com'],
             [
                 'name' => 'DevTZ Architect',
                 'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'beast@devtz.com'],
+            [
+                'name' => 'DevTZ Beast Admin',
+                'password' => Hash::make('pass123'),
                 'email_verified_at' => now(),
             ]
         );
