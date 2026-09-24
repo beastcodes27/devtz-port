@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\Article;
 use App\Models\ContactInquiry;
 use App\Models\Project;
 use App\Models\User;
@@ -38,7 +37,8 @@ class AdminAuthTest extends TestCase
         $response = $this->get('/login');
         $response->assertStatus(200);
         $response->assertSee('Mission Control');
-        $response->assertSee('admin@devtz.com');
+        $response->assertDontSee('admin@devtz.com');
+        $response->assertDontSee('Admin Credentials:');
     }
 
     public function test_team_member_can_authenticate_with_valid_credentials(): void
@@ -91,7 +91,7 @@ class AdminAuthTest extends TestCase
         $response = $this->actingAs($this->admin)->post('/admin/projects', $payload);
 
         $response->assertRedirect('/admin/projects');
-        
+
         $project = Project::where('title', 'Quantum Ledger Protocol')->first();
         $this->assertNotNull($project);
         $this->assertCount(3, $project->screenshots); // banner + 2 shots
@@ -132,4 +132,3 @@ class AdminAuthTest extends TestCase
         $this->assertGuest();
     }
 }
-
