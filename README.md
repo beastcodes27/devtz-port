@@ -28,7 +28,7 @@ DevTZ features a custom cyber-minimalist design system with instant runtime them
 
 ### 1. Navigation Bar (Header)
 - **Brand Identity**: Visual glowing monogram logo paired with "DevTZ Enterprise Digital Agency" title and metadata.
-- **Direct Navigation Links**: `Services`, `Case Studies`, `Process`, `About Us`, and `Contact`.
+- **Direct Navigation Links**: `Services`, `Projects`, `Process`, `About Us`, and `Contact`.
 - **Call to Action**: High-contrast `"Get a Quote"` CTA button with smooth scrolling to `#contact`.
 - **Developer Tools**: Quick interactive `$ devtz --cli` terminal launcher (`⌘K`) and light/dark theme toggle.
 
@@ -37,7 +37,7 @@ DevTZ features a custom cyber-minimalist design system with instant runtime them
 - **Target Offerings**: Highlights architecture and development for **Custom Web Apps**, fluid **Mobile Apps**, and mission-critical **System Integrations**.
 - **Unified Action Suite**:
   - Primary CTA: `"Start a Project"` (smooth scroll to quote inquiry).
-  - Secondary CTA: `"View Our Work"` (scroll to case studies).
+  - Secondary CTA: `"View Our Work"` (scroll to projects).
   - Interactive Terminal Trigger: `$ devtz --cli` console toggle preserved and intact.
 - **Trust Badges & Stats Banner**: Displays real-time operational indicators: `20+ Delivered Systems | 99.9% Reliability | Enterprise-Ready`.
 
@@ -49,14 +49,13 @@ Interactive service cards detailing value-focused engineering offerings with key
 - **UI/UX Design & Digital Modernization**: Legacy system modernization, WCAG accessible interfaces, and tokenized design systems.
 - **Key Deliverables Feature**: Every service card features a dedicated "Key Deliverables" bulleted checklist of tangible business outputs.
 
-### 4. Problem-Solution Case Studies
-Restructured problem-solution case cards replacing basic screenshots with architectural depth:
-- **Industry & Client Meta**: Prominent classification badges (Fintech, Healthcare & Telehealth, Cloud Infrastructure, LegalTech & AI, Logistics & Supply Chain, Commerce & Trading).
-- **The Challenge**: Concise breakdown of the client's bottleneck, scalability limits, or operational pain points.
-- **The DevTZ Architecture / Solution**: Engineered technical approach and implementation strategy.
-- **Tech Stack Badges**: Visual framework, runtime, and database badges.
-- **Business Impact / Outcome**: Callout highlighting measured outcomes (e.g. *"Reduced payment processing latency by 45%"*, *"94% sync conflict reduction"*).
-- **Dual Action Links**: `"View Case Study"` modal inspector and `"Live Demo"` external demonstration links.
+### 4. Production Projects Showcase & Admin Management
+Dynamic project showcase powered by an administrative management suite:
+- **Admin Screenshot Uploads**: Administrators can upload multiple local high-resolution screenshot images directly to disk storage (`storage/app/public/projects/screenshots`) with automatic thumbnail previews and gallery slider integration.
+- **Project Descriptions**: Rich multi-line project descriptions detailing system architecture, customer requirements, and functional scope.
+- **Live Demo Links**: Configurable demo URLs with prominent `"Live Demo"` launch links for external client evaluation.
+- **Tech Stack & Metrics**: Badges for production technologies and quantifiable metrics.
+- **Interactive Project Modal**: Inspect full screenshot sliders, client problem/solution breakdowns, and business impact outcomes.
 
 ### 5. Systematic Engineering Process Workflow (`#process`)
 Dedicated 4-step engineering lifecycle ensuring predictable delivery:

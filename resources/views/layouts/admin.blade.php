@@ -109,7 +109,11 @@
                         <span>Client Inquiries</span>
                     </div>
                     @php
-                        $newInquiriesCount = \App\Models\ContactInquiry::where('status', 'new')->count();
+                        try {
+                            $newInquiriesCount = \App\Models\ContactInquiry::where('status', 'new')->count();
+                        } catch (\Throwable $e) {
+                            $newInquiriesCount = 0;
+                        }
                     @endphp
                     @if($newInquiriesCount > 0)
                         <span class="px-1.5 py-0.5 text-[10px] rounded-full bg-red-500 text-white font-bold">{{ $newInquiriesCount }}</span>
