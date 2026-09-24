@@ -48,7 +48,7 @@
                 <!-- CTA Button -->
                 <a href="#contact" 
                    class="relative inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold font-mono tracking-wide text-[#1C2459] bg-[#F5FF67] hover:bg-[#E2EC48] rounded-lg shadow-[0_0_15px_rgba(245,255,103,0.3)] hover:shadow-[0_0_22px_rgba(245,255,103,0.5)] transition-all transform hover:-translate-y-0.5">
-                    <span>Initialize Project</span>
+                    <span>Get a Quote</span>
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
             </div>
@@ -86,8 +86,8 @@
             <button @click="mobileMenuOpen = false; toggleTerminal()" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-gray-100 dark:bg-[#1C2459] border border-gray-300 dark:border-[#2E3A82] text-xs font-mono text-[#1C2459] dark:text-[#F5FF67]">
                 <span>Open Terminal CLI</span>
             </button>
-            <a @click="mobileMenuOpen = false" href="#contact" class="flex items-center justify-center w-full py-3 text-sm font-semibold font-mono text-[#1C2459] bg-[#F5FF67] rounded-lg">
-                Initialize Project
+            <a @click="mobileMenuOpen = false" href="#contact" class="flex items-center justify-center w-full py-3 text-sm font-semibold font-mono text-[#1C2459] bg-[#F5FF67] hover:bg-[#E2EC48] rounded-lg shadow-md transition-all">
+                Get a Quote
             </a>
         </div>
     </div>
