@@ -11,16 +11,6 @@
   ╚═════╝  ╚══════╝   ╚═══╝      ╚═╝    ╚══════╝
 ```
 
-**Next-Gen Enterprise Digital Agency Portfolio Built with Laravel 12 & Tailored Cyber Aesthetics**
-
-[![Laravel 12](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
-[![PHP 8.4](https://img.shields.io/badge/PHP-8.4-777BB4?style=for-the-badge&logo=php)](https://php.net)
-[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com)
-[![Alpine.js](https://img.shields.io/badge/Alpine.js-3.x-8BC0D0?style=for-the-badge&logo=alpine.js)](https://alpinejs.dev)
-[![GitHub Remote](https://img.shields.io/badge/Repository-beastcodes27%2Fdevtz--port-F5FF67?style=for-the-badge&logo=github&color=1C2459)](https://github.com/beastcodes27/devtz-port.git)
-
-</div>
-
 ---
 
 ## 🎨 Dual-Theme Design Architecture
