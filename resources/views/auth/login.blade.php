@@ -33,15 +33,6 @@
                 </div>
             @endif
 
-            <!-- Quick Demo Credentials Callout -->
-            <div class="p-3.5 rounded-xl bg-gray-50 dark:bg-[#12173B] border border-gray-200 dark:border-[#2E3A82] text-xs font-mono space-y-1">
-                <div class="text-[#1C2459] dark:text-[#F5FF67] font-bold flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#F5FF67] animate-ping"></span>
-                    <span>Admin Credentials:</span>
-                </div>
-                <div class="text-gray-600 dark:text-gray-300">Email: <span class="font-bold text-[#1C2459] dark:text-white">admin@devtz.com</span></div>
-                <div class="text-gray-600 dark:text-gray-300">Password: <span class="font-bold text-[#1C2459] dark:text-white">password</span></div>
-            </div>
 
             <form action="{{ route('login.post') }}" method="POST" class="space-y-5">
                 @csrf
