@@ -14,7 +14,7 @@ class PortfolioTest extends TestCase
 
         $view->assertSee('Services');
         $view->assertSee('Projects');
-        $view->assertSee('Process');
+        $view->assertSee('Team');
         $view->assertSee('About Us');
         $view->assertSee('Contact');
         $view->assertSee('Get a Quote');
@@ -40,16 +40,17 @@ class PortfolioTest extends TestCase
         $view->assertSee('Enterprise-Ready');
     }
 
-    public function test_process_component_displays_systematic_workflow_stages(): void
+    public function test_team_component_displays_core_engineers_and_specializations(): void
     {
-        $view = $this->view('components.process');
+        $view = $this->view('components.team');
 
-        $view->assertSee('HOW WE DELIVER');
-        $view->assertSee('Our proven engineering process.');
-        $view->assertSee('Discovery & Architecture Blueprint', false);
-        $view->assertSee('Agile Sprint Engineering');
-        $view->assertSee('Benchmark & Security Auditing', false);
-        $view->assertSee('Production Rollout & Telemetry', false);
+        $view->assertSee('CORE ARCHITECTS & ENGINEERS', false);
+        $view->assertSee('The engineering team behind the systems.');
+        $view->assertSee('Beast');
+        $view->assertSee('Lead Systems Architect');
+        $view->assertSee('Sarah Chen');
+        $view->assertSee('Marcus Vance');
+        $view->assertSee('Elena Rostova');
     }
 
     public function test_services_component_renders_interactive_cards_with_deliverables(): void

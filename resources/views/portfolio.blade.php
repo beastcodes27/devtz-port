@@ -13,8 +13,8 @@
     <!-- Case Studies & Portfolio Projects -->
     @include('components.projects')
 
-    <!-- Engineering Delivery Process -->
-    @include('components.process')
+    <!-- Core Engineering Team & Architects -->
+    @include('components.team')
 
     <!-- Tech Stack Matrix -->
     @include('components.tech-matrix')

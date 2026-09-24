@@ -28,7 +28,7 @@ DevTZ features a custom cyber-minimalist design system with instant runtime them
 
 ### 1. Navigation Bar (Header)
 - **Brand Identity**: Visual glowing monogram logo paired with "DevTZ Enterprise Digital Agency" title and metadata.
-- **Direct Navigation Links**: `Services`, `Projects`, `Process`, `About Us`, and `Contact`.
+- **Direct Navigation Links**: `Services`, `Projects`, `Team`, `About Us`, and `Contact`.
 - **Call to Action**: High-contrast `"Get a Quote"` CTA button with smooth scrolling to `#contact`.
 - **Developer Tools**: Quick interactive `$ devtz --cli` terminal launcher (`⌘K`) and light/dark theme toggle.
 
@@ -57,12 +57,14 @@ Dynamic project showcase powered by an administrative management suite:
 - **Tech Stack & Metrics**: Badges for production technologies and quantifiable metrics.
 - **Interactive Project Modal**: Inspect full screenshot sliders, client problem/solution breakdowns, and business impact outcomes.
 
-### 5. Systematic Engineering Process Workflow (`#process`)
-Dedicated 4-step engineering lifecycle ensuring predictable delivery:
-- **Phase 01 — Blueprint**: Discovery & Architecture Blueprint (Architecture RFC & Specs).
-- **Phase 02 — Build**: Agile Sprint Engineering (Continuous Working Demos & TDD).
-- **Phase 03 — Quality**: Benchmark & Security Auditing (Audit & Load Benchmark Reports).
-- **Phase 04 — Scale**: Production Rollout & Telemetry (Live System & SLA Guarantees).
+### 5. Core Engineering Team (`#team`)
+Showcases the multidisciplinary engineering architects and leads:
+- **Founder & Lead Systems Architect**: Distributed systems, high-throughput Laravel Octane, and fintech rails.
+- **Principal Full-Stack Engineer**: Enterprise SaaS portals, real-time WebSocket telemetry, and reactive design systems.
+- **Head of Mobile & Cross-Platform**: Native-grade Flutter/Swift apps, offline sync, and encrypted WebRTC.
+- **Cloud & DevOps Infrastructure Lead**: Kubernetes clusters, automated GitOps CI/CD pipelines, and Prometheus monitoring.
+- **Senior Backend & Data Engineer**: Event-driven pipelines, CQRS ledgers, and database query optimization.
+- **Lead Product Designer & UX Architect**: Tokenized design systems, user flows, and enterprise design benchmarks.
 
 ### 6. Supporting Modules
 - **Interactive Project Cost & Scope Estimator**: Dynamic real-time quote calculator.

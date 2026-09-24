@@ -19,7 +19,7 @@
             <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
                 <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Services</a>
                 <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Projects</a>
-                <a href="#process" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Process</a>
+                <a href="#team" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Team</a>
                 <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">About Us</a>
                 <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67] transition-colors duration-150">Contact</a>
             </nav>
@@ -78,7 +78,7 @@
         <nav class="flex flex-col space-y-3 font-medium text-sm">
             <a @click="mobileMenuOpen = false" href="#services" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Services</a>
             <a @click="mobileMenuOpen = false" href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Projects</a>
-            <a @click="mobileMenuOpen = false" href="#process" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Process</a>
+            <a @click="mobileMenuOpen = false" href="#team" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Team</a>
             <a @click="mobileMenuOpen = false" href="#about" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">About Us</a>
             <a @click="mobileMenuOpen = false" href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Contact</a>
         </nav>
