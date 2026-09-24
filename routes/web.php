@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminArticleController;
+use App\Http\Controllers\Admin\AdminInquiryController;
+use App\Http\Controllers\Admin\AdminProjectController;
+use App\Http\Controllers\Admin\AdminSubscriberController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsletterController;
@@ -18,12 +24,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Protected Admin Mission Control Routes
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('projects', \App\Http\Controllers\Admin\AdminProjectController::class);
-    Route::resource('inquiries', \App\Http\Controllers\Admin\AdminInquiryController::class)->only(['index', 'show', 'destroy']);
-    Route::patch('inquiries/{inquiry}/status', [\App\Http\Controllers\Admin\AdminInquiryController::class, 'updateStatus'])->name('inquiries.status');
-    Route::resource('articles', \App\Http\Controllers\Admin\AdminArticleController::class);
-    Route::get('subscribers', [\App\Http\Controllers\Admin\AdminSubscriberController::class, 'index'])->name('subscribers.index');
-    Route::patch('subscribers/{subscriber}/toggle', [\App\Http\Controllers\Admin\AdminSubscriberController::class, 'toggle'])->name('subscribers.toggle');
-    Route::delete('subscribers/{subscriber}', [\App\Http\Controllers\Admin\AdminSubscriberController::class, 'destroy'])->name('subscribers.destroy');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('projects', AdminProjectController::class);
+    Route::resource('inquiries', AdminInquiryController::class)->only(['index', 'show', 'destroy']);
+    Route::patch('inquiries/{inquiry}/status', [AdminInquiryController::class, 'updateStatus'])->name('inquiries.status');
+    Route::resource('articles', AdminArticleController::class);
+    Route::get('subscribers', [AdminSubscriberController::class, 'index'])->name('subscribers.index');
+    Route::patch('subscribers/{subscriber}/toggle', [AdminSubscriberController::class, 'toggle'])->name('subscribers.toggle');
+    Route::delete('subscribers/{subscriber}', [AdminSubscriberController::class, 'destroy'])->name('subscribers.destroy');
+    Route::resource('users', AdminUserController::class);
 });
