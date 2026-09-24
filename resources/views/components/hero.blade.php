@@ -103,10 +103,10 @@
                         </div>
                         
                         <div class="text-gray-400 pl-4 space-y-1 text-[11px]">
-                            <div><span class="text-[#F5FF67]">✓</span> Optimized Laravel 12 HTTP Kernel</div>
-                            <div><span class="text-[#F5FF67]">✓</span> Microservices Redis Message Bus</div>
-                            <div><span class="text-[#F5FF67]">✓</span> High-Concurrency Postgres Replicas</div>
-                            <div><span class="text-[#F5FF67]">✓</span> Automated Zero-Downtime CI/CD</div>
+                            <div><span class="text-[#F5FF67]">✓</span> Enterprise Custom Web Applications</div>
+                            <div><span class="text-[#F5FF67]">✓</span> Cross-Platform Mobile Apps (iOS & Android)</div>
+                            <div><span class="text-[#F5FF67]">✓</span> Cloud APIs & Mission-Critical Integrations</div>
+                            <div><span class="text-[#F5FF67]">✓</span> Automated Zero-Downtime CI/CD Delivery</div>
                         </div>
 
                         <!-- Live Pipeline Status Card -->
