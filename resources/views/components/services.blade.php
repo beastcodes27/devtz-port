@@ -4,13 +4,13 @@
         <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
             <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white dark:bg-[#12173B] border border-gray-300 dark:border-[#2E3A82] text-xs font-mono text-[#1C2459] dark:text-[#F5FF67]">
                 <span class="w-2 h-2 rounded-full bg-[#F5FF67]"></span>
-                <span>ENGINEERING CAPABILITIES</span>
+                <span>CORE ENGINEERING SERVICES</span>
             </div>
             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1C2459] dark:text-white">
-                Engineered for extreme performance & scale.
+                Bespoke digital solutions built for enterprise scale.
             </h2>
             <p class="text-base text-gray-600 dark:text-gray-300">
-                We replace bloated processes with pure engineering excellence. From bespoke web apps to AI-augmented backends, explore what we build for high-growth tech companies.
+                From custom web and mobile platforms to mission-critical backend APIs and digital modernization, explore our core engineering capabilities and tangible deliverables.
             </p>
         </div>
 
