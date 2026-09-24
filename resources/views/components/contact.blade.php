@@ -115,7 +115,7 @@
                             <label class="block text-xs font-mono text-gray-700 dark:text-gray-300 font-semibold" for="budget_range">
                                 Target Investment Range
                             </label>
-                            <input type="text" name="budget_range" id="budget_range" value="{{ old('budget_range', '$5,000 - $15,000+') }}" placeholder="e.g. $10,000"
+                            <input type="text" name="budget_range" id="budget_range" value="{{ old('budget_range', 'TSh 15,000,000 - 40,000,000+') }}" placeholder="e.g. TSh 25,000,000 or $10,000"
                                    class="w-full px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-[#12173B] border border-gray-300 dark:border-[#2E3A82] text-sm text-gray-900 dark:text-white focus:outline-none focus:border-[#F5FF67]">
                         </div>
 

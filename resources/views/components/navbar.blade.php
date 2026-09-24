@@ -35,6 +35,45 @@
                     <kbd class="px-1.5 py-0.5 text-[10px] bg-white dark:bg-[#1C2459] border border-gray-300 dark:border-[#2E3A82] rounded text-gray-500 dark:text-gray-400">⌘K</kbd>
                 </button>
 
+                <!-- Currency Selector Dropdown -->
+                <div class="relative" x-data="{ currOpen: false }" @click.outside="currOpen = false">
+                    <button @click="currOpen = !currOpen" 
+                            type="button"
+                            title="Switch Currency (Default: TZS)"
+                            class="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono bg-gray-100 dark:bg-[#12173B] text-gray-700 dark:text-[#F5FF67] border border-gray-300 dark:border-[#2E3A82] hover:border-[#F5FF67] transition-all">
+                        <span class="font-bold text-[#1C2459] dark:text-[#F5FF67]" x-text="getActiveCurrency().symbol"></span>
+                        <span class="font-semibold" x-text="currency"></span>
+                        <svg class="w-3 h-3 text-gray-400 transition-transform duration-200" :class="{ 'rotate-180': currOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div x-show="currOpen" 
+                         x-transition:enter="transition ease-out duration-150"
+                         x-transition:enter-start="opacity-0 scale-95"
+                         x-transition:enter-end="opacity-100 scale-100"
+                         x-transition:leave="transition ease-in duration-100"
+                         x-transition:leave-start="opacity-100 scale-100"
+                         x-transition:leave-end="opacity-0 scale-95"
+                         class="absolute right-0 mt-2 w-48 rounded-xl bg-white dark:bg-[#12173B] border border-gray-200 dark:border-[#2E3A82] shadow-xl py-1.5 z-50">
+                        <div class="px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-gray-400 border-b border-gray-100 dark:border-[#2E3A82]/50 flex items-center justify-between">
+                            <span>Select Currency</span>
+                            <span class="text-[9px] text-[#F5FF67] bg-[#1C2459] px-1 py-0.5 rounded font-bold">DEFAULT: TZS</span>
+                        </div>
+                        <template x-for="(c, code) in currencies" :key="code">
+                            <button type="button"
+                                    @click="setCurrency(code); currOpen = false"
+                                    class="w-full flex items-center justify-between px-3 py-2 text-xs font-mono text-left transition-colors hover:bg-gray-100 dark:hover:bg-[#171E4A]"
+                                    :class="currency === code ? 'text-[#1C2459] dark:text-[#F5FF67] font-bold bg-[#F5FF67]/15' : 'text-gray-700 dark:text-gray-300'">
+                                <span class="flex items-center gap-2">
+                                    <span class="w-8 text-center font-bold text-[#1C2459] dark:text-[#F5FF67]" x-text="c.symbol"></span>
+                                    <span x-text="c.code"></span>
+                                </span>
+                                <span class="text-[10px] text-gray-400 truncate max-w-[85px]" x-text="c.name"></span>
+                            </button>
+                        </template>
+                    </div>
+                </div>
+
                 <!-- Theme Switcher -->
                 <button @click="toggleTheme()" 
                         aria-label="Toggle Color Theme"
@@ -47,7 +86,7 @@
 
                 <!-- CTA Button -->
                 <a href="#contact" 
-                   class="relative inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold font-mono tracking-wide text-[#1C2459] bg-[#F5FF67] hover:bg-[#E2EC48] rounded-lg shadow-[0_0_15px_rgba(245,255,103,0.3)] hover:shadow-[0_0_22px_rgba(245,255,103,0.5)] transition-all transform hover:-translate-y-0.5">
+                    class="relative inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold font-mono tracking-wide text-[#1C2459] bg-[#F5FF67] hover:bg-[#E2EC48] rounded-lg shadow-[0_0_15px_rgba(245,255,103,0.3)] hover:shadow-[0_0_22px_rgba(245,255,103,0.5)] transition-all transform hover:-translate-y-0.5">
                     <span>Get a Quote</span>
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
@@ -55,6 +94,11 @@
 
             <!-- Mobile Menu Toggle Button -->
             <div class="flex items-center gap-2 md:hidden">
+                <button @click="setCurrency(currency === 'TZS' ? 'USD' : (currency === 'USD' ? 'EUR' : 'TZS'))" 
+                        title="Toggle Currency"
+                        class="px-2.5 py-1.5 rounded-lg bg-gray-100 dark:bg-[#12173B] text-xs font-mono font-bold text-gray-700 dark:text-[#F5FF67] border border-gray-300 dark:border-[#2E3A82]">
+                    <span x-text="currency"></span>
+                </button>
                 <button @click="toggleTheme()" class="p-2 rounded-lg bg-gray-100 dark:bg-[#12173B] text-gray-700 dark:text-[#F5FF67] border border-gray-300 dark:border-[#2E3A82]">
                     <svg x-show="!darkMode" class="w-4 h-4 text-[#1C2459]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                     <svg x-show="darkMode" class="w-4 h-4 text-[#F5FF67]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
@@ -82,6 +126,25 @@
             <a @click="mobileMenuOpen = false" href="#about" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">About Us</a>
             <a @click="mobileMenuOpen = false" href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-[#1C2459] dark:hover:text-[#F5FF67]">Contact</a>
         </nav>
+        
+        <!-- Mobile Currency Selector -->
+        <div class="pt-3 border-t border-gray-200 dark:border-[#2E3A82] space-y-2">
+            <div class="flex items-center justify-between">
+                <span class="text-[11px] font-mono text-gray-500 dark:text-gray-400 uppercase">Currency</span>
+                <span class="text-[10px] font-mono text-[#F5FF67] bg-[#1C2459] px-1.5 py-0.5 rounded font-bold">Default: TZS (TSh)</span>
+            </div>
+            <div class="grid grid-cols-5 gap-1.5">
+                <template x-for="(c, code) in currencies" :key="code">
+                    <button type="button" 
+                            @click="setCurrency(code)"
+                            :class="currency === code ? 'bg-[#F5FF67] text-[#1C2459] font-bold border-[#F5FF67]' : 'bg-gray-100 dark:bg-[#1C2459] text-gray-600 dark:text-gray-300 border-gray-200 dark:border-[#2E3A82]'"
+                            class="py-1.5 px-1 text-center text-xs font-mono rounded-lg border transition-all"
+                            x-text="code">
+                    </button>
+                </template>
+            </div>
+        </div>
+
         <div class="pt-3 border-t border-gray-200 dark:border-[#2E3A82] flex flex-col gap-3">
             <button @click="mobileMenuOpen = false; toggleTerminal()" class="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-gray-100 dark:bg-[#1C2459] border border-gray-300 dark:border-[#2E3A82] text-xs font-mono text-[#1C2459] dark:text-[#F5FF67]">
                 <span>Open Terminal CLI</span>

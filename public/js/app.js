@@ -1,6 +1,15 @@
 function devtzApp() {
     return {
         darkMode: localStorage.getItem('devtz-theme') !== 'light',
+        currency: localStorage.getItem('devtz-currency') || 'TZS',
+        currencyDropdownOpen: false,
+        currencies: {
+            TZS: { code: 'TZS', symbol: 'TSh', name: 'Tanzanian Shilling', rate: 2600, step: 50000 },
+            USD: { code: 'USD', symbol: '$', name: 'US Dollar', rate: 1, step: 50 },
+            EUR: { code: 'EUR', symbol: '€', name: 'Euro', rate: 0.92, step: 50 },
+            GBP: { code: 'GBP', symbol: '£', name: 'British Pound', rate: 0.79, step: 50 },
+            KES: { code: 'KES', symbol: 'KSh', name: 'Kenyan Shilling', rate: 130, step: 5000 }
+        },
         mobileMenuOpen: false,
         terminalOpen: false,
         terminalInput: '',
@@ -12,6 +21,35 @@ function devtzApp() {
         selectedArticle: null,
         techTab: 'backend',
         projectCategory: 'all',
+
+        getActiveCurrency() {
+            return this.currencies[this.currency] || this.currencies.TZS;
+        },
+
+        setCurrency(code) {
+            const upper = (code || '').toUpperCase();
+            if (this.currencies[upper]) {
+                this.currency = upper;
+                localStorage.setItem('devtz-currency', upper);
+                this.currencyDropdownOpen = false;
+            }
+        },
+
+        formatAmount(usdAmount) {
+            const curr = this.getActiveCurrency();
+            let converted = (usdAmount || 0) * curr.rate;
+            if (curr.step && curr.step > 1) {
+                converted = Math.round(converted / curr.step) * curr.step;
+            } else {
+                converted = Math.round(converted);
+            }
+            return converted.toLocaleString();
+        },
+
+        formatMoney(usdAmount) {
+            const curr = this.getActiveCurrency();
+            return curr.symbol + ' ' + this.formatAmount(usdAmount);
+        },
         
         // Interactive Cost Estimator State
         estimator: {
@@ -19,6 +57,7 @@ function devtzApp() {
             scale: 'growth',
             timeline: 'standard',
             features: ['auth', 'database', 'api', 'admin-panel'],
+            baseUSD: 6500,
             budget: 6500,
             calculate() {
                 let base = 2500;
@@ -37,7 +76,8 @@ function devtzApp() {
                 if (this.timeline === 'relaxed') timelineMult = 0.9;
 
                 let featureCost = this.features.length * 600;
-                this.budget = Math.round((base * scaleMult * timelineMult) + featureCost);
+                this.baseUSD = Math.round((base * scaleMult * timelineMult) + featureCost);
+                this.budget = this.baseUSD;
             }
         },
 
@@ -50,6 +90,11 @@ function devtzApp() {
                 } else {
                     document.documentElement.classList.remove('dark');
                     localStorage.setItem('devtz-theme', 'light');
+                }
+            });
+            this.$watch('currency', val => {
+                if (this.currencies[val]) {
+                    localStorage.setItem('devtz-currency', val);
                 }
             });
         },
@@ -77,7 +122,7 @@ function devtzApp() {
             if (cmd === 'help') {
                 this.terminalHistory.push({
                     type: 'output',
-                    text: 'Available Commands:\n  • about     - Company overview & vision\n  • services  - Core engineering solutions\n  • projects  - Shipped enterprise case studies\n  • stack     - Core technology matrix\n  • quote     - Launch interactive cost estimator\n  • hire      - Open project inquiry channel\n  • theme     - Usage: theme [dark|light]\n  • clear     - Clear terminal buffer\n  • exit      - Close terminal'
+                    text: 'Available Commands:\n  • about     - Company overview & vision\n  • services  - Core engineering solutions\n  • projects  - Shipped enterprise case studies\n  • stack     - Core technology matrix\n  • quote     - Launch interactive cost estimator\n  • currency  - View or switch active currency (TZS, USD, EUR, GBP, KES)\n  • hire      - Open project inquiry channel\n  • theme     - Usage: theme [dark|light]\n  • clear     - Clear terminal buffer\n  • exit      - Close terminal'
                 });
             } else if (cmd === 'about') {
                 this.terminalHistory.push({
@@ -102,6 +147,28 @@ function devtzApp() {
             } else if (cmd === 'quote') {
                 this.terminalOpen = false;
                 document.getElementById('cost-estimator')?.scrollIntoView({ behavior: 'smooth' });
+            } else if (cmd === 'currency' || cmd.startsWith('currency ')) {
+                const parts = cmd.split(/\s+/);
+                if (parts.length > 1) {
+                    const target = parts[1].toUpperCase();
+                    if (this.currencies[target]) {
+                        this.setCurrency(target);
+                        this.terminalHistory.push({
+                            type: 'output',
+                            text: `✓ Currency switched to ${target} (${this.currencies[target].symbol} — ${this.currencies[target].name})`
+                        });
+                    } else {
+                        this.terminalHistory.push({
+                            type: 'error',
+                            text: `Unknown currency: "${parts[1]}". Available options: ${Object.keys(this.currencies).join(', ')}`
+                        });
+                    }
+                } else {
+                    this.terminalHistory.push({
+                        type: 'output',
+                        text: `Active Currency: ${this.currency} (${this.getActiveCurrency().symbol} — ${this.getActiveCurrency().name})\nAvailable options: TZS (default), USD, EUR, GBP, KES\nSwitch with: currency [code]`
+                    });
+                }
             } else if (cmd === 'hire') {
                 this.terminalOpen = false;
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });

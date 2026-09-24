@@ -67,8 +67,9 @@ Showcases the multidisciplinary engineering architects and leads:
 - **Lead Product Designer & UX Architect**: Tokenized design systems, user flows, and enterprise design benchmarks.
 
 ### 6. Supporting Modules
-- **Interactive Project Cost & Scope Estimator**: Dynamic real-time quote calculator.
-- **Developer CLI Terminal (Easter Egg)**: Full interactive shell accessible via `⌘K` or the CLI button.
+- **Interactive Project Cost & Scope Estimator**: Dynamic real-time quote calculator defaulting to Tanzanian Shillings (**TZS / TShs**) with multi-currency switching support (`TZS`, `USD`, `EUR`, `GBP`, `KES`), automatic step-rounding, and seamless transfer into the consultation inquiry form.
+- **Global Multi-Currency Switcher**: Accessible from the desktop navigation bar, mobile drawer, and interactive terminal CLI (`currency [code]`), persisting preferences in `localStorage`.
+- **Developer CLI Terminal (Easter Egg)**: Full interactive shell accessible via `⌘K` or the CLI button, including diagnostic, navigation, and `currency` commands.
 - **Mission Control Admin**: Authenticated management interface with multi-admin creation capabilities.
 
 ---

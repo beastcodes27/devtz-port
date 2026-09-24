@@ -126,4 +126,26 @@ class PortfolioTest extends TestCase
         $view->assertSee('name="screenshot_files[]"', false);
         $view->assertSee('enctype="multipart/form-data"', false);
     }
+
+    public function test_cost_estimator_component_renders_currency_switching_options_with_tzs_default(): void
+    {
+        $view = $this->view('components.cost-estimator');
+
+        $view->assertSee('INTERACTIVE SCOPING ENGINE');
+        $view->assertSee('Transparent Project Cost Estimator');
+        $view->assertSee('TShs (TZS)');
+        $view->assertSee('ESTIMATED BALLPARK');
+        $view->assertSee('setCurrency');
+        $view->assertSee('formatAmount');
+        $view->assertSee('formatMoney');
+    }
+
+    public function test_navbar_renders_currency_selector_with_tzs_default(): void
+    {
+        $view = $this->view('components.navbar');
+
+        $view->assertSee('Switch Currency (Default: TZS)');
+        $view->assertSee('DEFAULT: TZS');
+        $view->assertSee('setCurrency');
+    }
 }

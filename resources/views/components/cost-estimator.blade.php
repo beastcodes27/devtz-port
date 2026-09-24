@@ -11,7 +11,7 @@
                 Transparent Project Cost Estimator
             </h2>
             <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-                Configure your target product parameters below to generate an instant baseline architectural estimate and development roadmap.
+                Configure your target product parameters below to generate an instant baseline architectural estimate and development roadmap. Default currency is <strong>TShs (TZS)</strong> with instant multi-currency switching.
             </p>
         </div>
 
@@ -121,14 +121,35 @@
             <!-- Estimated Quote Summary Card (Right 4 cols) -->
             <div class="lg:col-span-4 p-6 sm:p-8 rounded-2xl bg-gray-900 text-white dark:bg-[#12173B] border-2 border-gray-800 dark:border-[#2E3A82] space-y-6 shadow-xl sticky top-28">
                 
-                <div class="space-y-1 pb-4 border-b border-gray-800 dark:border-[#2E3A82]">
-                    <div class="text-[11px] font-mono text-[#F5FF67] uppercase tracking-wider font-semibold">ESTIMATED BALLPARK</div>
-                    <div class="text-4xl font-extrabold font-mono text-[#F5FF67] flex items-baseline gap-1">
-                        <span>$</span>
-                        <span x-text="estimator.budget.toLocaleString()"></span>
-                        <span class="text-xs font-normal text-gray-400 font-sans">USD</span>
+                <div class="space-y-3 pb-5 border-b border-gray-800 dark:border-[#2E3A82]">
+                    <div class="flex items-center justify-between gap-2">
+                        <div class="text-[11px] font-mono text-[#F5FF67] uppercase tracking-wider font-semibold">ESTIMATED BALLPARK</div>
+                        <!-- Currency Selector Switcher -->
+                        <div class="inline-flex items-center gap-1 bg-black/40 dark:bg-[#1C2459]/60 p-1 rounded-lg border border-gray-700 dark:border-[#2E3A82]">
+                            <template x-for="(c, code) in currencies" :key="code">
+                                <button type="button"
+                                        @click="setCurrency(code)"
+                                        :class="currency === code ? 'bg-[#F5FF67] text-[#1C2459] font-bold shadow-sm' : 'text-gray-400 hover:text-white'"
+                                        class="px-2 py-0.5 text-[11px] font-mono rounded transition-all"
+                                        :title="c.name"
+                                        x-text="code">
+                                </button>
+                            </template>
+                        </div>
                     </div>
-                    <div class="text-[11px] text-gray-400">Fixed-price or agile sprint delivery model</div>
+
+                    <!-- Price Display -->
+                    <div class="space-y-1">
+                        <div class="text-3xl sm:text-4xl font-extrabold font-mono text-[#F5FF67] flex items-baseline gap-2 flex-wrap">
+                            <span class="text-xl sm:text-2xl text-gray-300 font-sans font-bold" x-text="getActiveCurrency().symbol"></span>
+                            <span x-text="formatAmount(estimator.baseUSD)"></span>
+                            <span class="text-xs font-normal text-gray-400 font-mono" x-text="currency"></span>
+                        </div>
+                        <div class="flex items-center justify-between text-[11px] text-gray-400 pt-1">
+                            <span>Fixed-price or agile sprint delivery</span>
+                            <span class="font-mono text-gray-400" x-show="currency !== 'USD'" x-text="'1 USD ≈ ' + getActiveCurrency().rate.toLocaleString() + ' ' + currency"></span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Scope summary bullets -->
@@ -153,7 +174,7 @@
 
                 <!-- CTA Button -->
                 <button type="button"
-                        @click="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); document.getElementById('project_type').value = estimator.platform; document.getElementById('budget_range').value = '$' + estimator.budget.toLocaleString();"
+                        @click="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); document.getElementById('project_type').value = estimator.platform; document.getElementById('budget_range').value = formatMoney(estimator.baseUSD);"
                         class="w-full py-3.5 px-4 text-xs font-mono font-bold uppercase tracking-wider text-[#1C2459] bg-[#F5FF67] hover:bg-[#E2EC48] rounded-xl shadow-[0_0_20px_rgba(245,255,103,0.3)] transition-all">
                     Lock In Estimate & Inquire
                 </button>
