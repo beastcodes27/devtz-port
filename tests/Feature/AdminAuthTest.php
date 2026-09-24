@@ -41,6 +41,15 @@ class AdminAuthTest extends TestCase
         $response->assertDontSee('Admin Credentials:');
     }
 
+    public function test_login_page_does_not_prefill_credentials(): void
+    {
+        $response = $this->get('/login');
+
+        $response->assertStatus(200);
+        $response->assertDontSee('value="admin@devtz.com"', false);
+        $response->assertDontSee('value="password"', false);
+    }
+
     public function test_team_member_can_authenticate_with_valid_credentials(): void
     {
         $response = $this->post('/login', [
