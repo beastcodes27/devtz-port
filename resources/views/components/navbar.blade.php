@@ -1,8 +1,8 @@
 <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/85 dark:bg-[#1C2459]/90 border-b border-gray-200 dark:border-[#2E3A82] transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
-            <!-- Brand Logo -->
-            <a href="/" class="flex items-center gap-3 group">
+            <!-- Brand Logo + Agency Name -->
+            <a href="/" class="flex items-center gap-3 group" title="DevTZ Enterprise Digital Agency">
                 <div class="w-10 h-10 rounded-lg bg-[#1C2459] dark:bg-[#12173B] border-2 border-[#F5FF67] flex items-center justify-center text-[#F5FF67] font-mono font-bold text-xl shadow-[0_0_15px_rgba(245,255,103,0.3)] group-hover:scale-105 transition-transform duration-200">
                     &lt;/&gt;
                 </div>
@@ -11,7 +11,7 @@
                         <span class="font-bold text-2xl tracking-tight text-[#1C2459] dark:text-white font-mono">Dev<span class="text-[#1C2459] dark:text-[#F5FF67] bg-[#F5FF67] dark:bg-transparent px-1.5 py-0.5 rounded dark:px-0">TZ</span></span>
                         <span class="inline-block w-2 h-2 rounded-full bg-[#F5FF67] animate-pulse"></span>
                     </div>
-                    <span class="text-[10px] uppercase font-mono tracking-widest text-gray-500 dark:text-gray-400">Software Studio</span>
+                    <span class="text-[10px] uppercase font-mono tracking-widest text-gray-500 dark:text-gray-400">Enterprise Digital Agency</span>
                 </div>
             </a>
 
