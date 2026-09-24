@@ -140,4 +140,80 @@ class AdminAuthTest extends TestCase
         $response->assertRedirect('/');
         $this->assertGuest();
     }
+
+    public function test_beast_admin_can_authenticate_with_credentials(): void
+    {
+        $beast = User::create([
+            'name' => 'DevTZ Beast Admin',
+            'email' => 'beast@devtz.com',
+            'password' => Hash::make('pass123'),
+        ]);
+
+        $response = $this->post('/login', [
+            'email' => 'beast@devtz.com',
+            'password' => 'pass123',
+        ]);
+
+        $response->assertRedirect('/admin');
+        $this->assertAuthenticatedAs($beast);
+    }
+
+    public function test_admin_can_view_admin_users_list(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/users');
+
+        $response->assertStatus(200);
+        $response->assertSee('Mission Control Operators');
+        $response->assertSee($this->admin->email);
+    }
+
+    public function test_admin_can_view_create_admin_user_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/users/create');
+
+        $response->assertStatus(200);
+        $response->assertSee('Register New Admin Operator');
+    }
+
+    public function test_admin_can_create_new_admin_user(): void
+    {
+        $response = $this->actingAs($this->admin)->post('/admin/users', [
+            'name' => 'Sarah Connor',
+            'email' => 'sarah@devtz.com',
+            'password' => 'secret123',
+            'password_confirmation' => 'secret123',
+        ]);
+
+        $response->assertRedirect('/admin/users');
+        $this->assertDatabaseHas('users', [
+            'name' => 'Sarah Connor',
+            'email' => 'sarah@devtz.com',
+        ]);
+    }
+
+    public function test_admin_cannot_create_admin_with_duplicate_email(): void
+    {
+        $response = $this->actingAs($this->admin)->post('/admin/users', [
+            'name' => 'Duplicate Admin',
+            'email' => 'admin@devtz.com',
+            'password' => 'secret123',
+            'password_confirmation' => 'secret123',
+        ]);
+
+        $response->assertSessionHasErrors('email');
+    }
+
+    public function test_guest_cannot_access_admin_user_routes(): void
+    {
+        $response = $this->get('/admin/users');
+        $response->assertRedirect('/login');
+
+        $createResponse = $this->post('/admin/users', [
+            'name' => 'Hacker Admin',
+            'email' => 'hacker@devtz.com',
+            'password' => 'password123',
+            'password_confirmation' => 'password123',
+        ]);
+        $createResponse->assertRedirect('/login');
+    }
 }
