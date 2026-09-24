@@ -145,7 +145,7 @@
                     </div>
                     <div class="min-w-0">
                         <div class="text-xs font-bold font-mono text-[#1C2459] dark:text-white truncate">{{ Auth::user()->name ?? 'DevTZ Admin' }}</div>
-                        <div class="text-[10px] text-gray-500 dark:text-gray-400 truncate">{{ Auth::user()->email ?? 'admin@devtz.com' }}</div>
+                        <div class="text-[10px] text-gray-500 dark:text-gray-400 truncate">{{ Auth::user()->email ?? '' }}</div>
                     </div>
                 </div>
 
