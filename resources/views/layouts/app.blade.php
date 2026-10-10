@@ -116,7 +116,7 @@
     <script>
         function appState() {
             return {
-                darkMode: localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+                darkMode: localStorage.getItem('theme') === 'dark',
                 mobileMenuOpen: false,
                 terminalOpen: false,
                 terminalInput: '',

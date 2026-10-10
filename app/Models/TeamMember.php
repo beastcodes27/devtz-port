@@ -26,3 +26,4 @@ class TeamMember extends Model
         'order' => 'integer',
     ];
 }
+

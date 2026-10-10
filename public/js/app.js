@@ -1,6 +1,6 @@
 function devtzApp() {
     return {
-        darkMode: localStorage.getItem('devtz-theme') !== 'light',
+        darkMode: localStorage.getItem('devtz-theme') === 'dark',
         currency: localStorage.getItem('devtz-currency') || 'TZS',
         currencyDropdownOpen: false,
         currencies: {

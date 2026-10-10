@@ -74,3 +74,4 @@ class AdminTeamController extends Controller
         return redirect()->route('admin.team.index')->with('success', 'Team member deleted successfully.');
     }
 }
+
