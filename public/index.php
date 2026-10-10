@@ -370,7 +370,10 @@ if (!function_exists('route')) {
 // Master Render Process
 $layoutFile = __DIR__ . '/../resources/views/layouts/app.blade.php';
 
-if (in_array($uri, ['/manage', '/login', '/admin'])) {
+$rawPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
+$cleanPath = '/' . trim(strtolower($rawPath), '/');
+
+if (in_array($cleanPath, ['/manage', '/login', '/admin'])) {
     $targetFile = __DIR__ . '/../resources/views/auth/login.blade.php';
 } else {
     $targetFile = __DIR__ . '/../resources/views/portfolio.blade.php';
