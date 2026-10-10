@@ -86,31 +86,6 @@
             </div>
         </div>
 
-        <!-- What We Do Matrix -->
-        <div class="rounded-2xl bg-gradient-to-br from-[#1C2459] to-[#12173B] p-8 sm:p-10 border border-[#2E3A82] text-white shadow-xl">
-            <h3 class="text-2xl sm:text-3xl font-bold mb-8 text-center font-mono">
-                <span class="text-[#F5FF67]">&lt;</span> WHAT WE DO <span class="text-[#F5FF67]">/&gt;</span>
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                @php
-                    $whatWeDo = [
-                        ['title' => 'Enterprise Solutions', 'desc' => 'Custom ERP, CRM, and business management systems'],
-                        ['title' => 'Web Development', 'desc' => 'Modern websites and high-throughput web applications'],
-                        ['title' => 'Mobile Apps', 'desc' => 'Native & cross-platform iOS and Android applications'],
-                        ['title' => 'Automation', 'desc' => 'Process automation and RPA intelligent workflow solutions'],
-                        ['title' => 'Consulting', 'desc' => 'Technology strategy, architecture & digital transformation'],
-                        ['title' => 'Support', 'desc' => '24/7 maintenance, SLAs and technical support'],
-                    ];
-                @endphp
-                @foreach($whatWeDo as $item)
-                    <div class="p-5 rounded-xl bg-white/5 border border-[#2E3A82] hover:bg-white/10 transition-all">
-                        <div class="text-[#F5FF67] font-mono text-xs mb-2">▸ SYSTEM SERVICE</div>
-                        <h4 class="text-lg font-bold mb-1 text-white">{{ $item['title'] }}</h4>
-                        <p class="text-xs text-gray-300 leading-relaxed">{{ $item['desc'] }}</p>
-                    </div>
-                @endforeach
-            </div>
-        </div>
 
     </div>
 </section>
